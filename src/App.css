@@ -1,38 +1,54 @@
-.App {
-  text-align: center;
+/* DEFINE CSS VARIABLES*/
+
+:root{
+  --darkPrimaryColor: #0b0e11;
+  --darkSecondaryColor: #101419;
+  --darkTerciaryColor: #3f4347;
+  --customizeColor: #d3454f;
+  --white: #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* NAVBAR STYLES */
+
+.MuiAppBar-root{
+  box-shadow: none !important;
+  padding: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.MuiTypography-root {
+    color: #3f4347;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.MuiBottomNavigation-root{
+  background-color: var(--primaryColor) !important;
+  margin-right: 3rem;
 }
 
-.App-link {
-  color: #61dafb;
+.MuiBottomBase-root{
+  color: var(--white) !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.MuiBottomNavigationAction-root.Mui-selected{
+  color: var(--customizeColor) !important;
+}
+
+.MuiToggleButtonGroup-root{
+  background-color: var(--darkTerciaryColor);
+  border-radius: 3rem !important;
+}
+.MuiToggleButtonGroup-root .MuiButtonBase-root{
+  color: var(--darkSecondaryColor);
+}
+
+.MuiToggleButtonGroup-root .Mui-selected{
+  color: var(--customizeColor) !important;
+}
+
+/* HOME PAGE */
+
+#Home {
+  margin-top: 96px !important;
+  padding: 2rem;
+  height: 80vh;
+  background-color: #3f4347;
 }
