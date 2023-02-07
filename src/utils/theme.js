@@ -5,6 +5,7 @@ const customTheme = createTheme({
     mode: "light",
     primary: {
       main: '#d3454f;',
+      dark: '#933037'
     },
   },
 });

@@ -13,6 +13,7 @@
 .MuiAppBar-root{
   box-shadow: none !important;
   padding: 1rem;
+  background-color: #ffffff !important;
 }
 
 .MuiTypography-root {
@@ -20,8 +21,8 @@
 }
 
 .MuiBottomNavigation-root{
-  background-color: var(--primaryColor) !important;
   margin-right: 3rem;
+  background-color: transparent;
 }
 
 .MuiBottomBase-root{
@@ -49,10 +50,91 @@
 #Home {
   margin-top: 96px !important;
   padding: 2rem;
-  height: 80vh;
-  background-color: #3f4347;
+  height: 90vh;
 }
 
 #Home .MuiGrid-container {
   align-items: center;
+}
+
+#Home .MuiButtonBase-root:hover{
+  background-color: transparent;
+}
+
+#Home .MuiButtonBase-root .MuiListItemIcon-root{
+  color: var(--darkTerciaryColor);
+}
+
+#Home .MuiButtonBase-root .MuiListItemIcon-root:hover{
+  color: var(--darkSecondaryColor);
+}
+
+#Home .MuiGrid-container #presentation_item{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: none;
+}
+
+#presentation_item .presentation_subtitle{
+  margin-bottom: 1rem;
+}
+
+#presentation_item .present_btn_stack{
+  margin-top: 3rem;
+}
+
+#Home .MuiGrid-container #photoContainer{
+  overflow: hidden;
+  position: relative;
+}
+
+#Home .MuiGrid-container #photoItem{
+  overflow: hidden;
+  box-shadow: none;
+}
+
+/* ABOUT PAGE */
+
+#About {
+  height: 90vh;
+}
+
+#about-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+#about-container #Title-container{
+  box-shadow: none;
+}
+
+#about-container #two-content{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: none;
+}
+
+#avatar-container{
+  margin-right: 3rem;
+  box-shadow: none;
+}
+
+#avatar-container #avatar-item{
+  border-radius: 2rem;
+}
+
+#desc-item {
+  box-shadow: none;
+}
+
+#dates {
+  margin-top: 4rem;
+}
+
+#dates .dateInfo{
+  box-shadow: none;
+  font-size: 1.3rem;
 }
