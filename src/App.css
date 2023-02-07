@@ -52,3 +52,7 @@
   height: 80vh;
   background-color: #3f4347;
 }
+
+#Home .MuiGrid-container {
+  align-items: center;
+}
