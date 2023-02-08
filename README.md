@@ -35,9 +35,9 @@
 |Home|🟡|
 |About|🟡|
 |Skills|🟡|
-|Services|🔴|
-|Works|🔴|
-|ContactMe|🔴|
+|Services|🟡|
+|Works|🟡|
+|ContactMe|🟡|
 
   
   

@@ -46,7 +46,7 @@ export default function AutoGrid() {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={3}>
         <Grid item xs={1}>
-          <List sx={styles.list} component="nav" aria-label="mailbox folders">
+          <List sx={styles.list} component="nav">
             <ListItem button>
               <ListItemIcon>
                 <LinkedInIcon />
