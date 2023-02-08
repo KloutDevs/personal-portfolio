@@ -11,17 +11,17 @@ export default function ColorTabs() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box className='box-tabs' sx={{ width: '100%' }}>
       <Tabs
+        className='tabs-container'
         value={value}
         onChange={handleChange}
         textColor="secondary"
-        indicatorColor="secondary"
-        aria-label="secondary tabs example"
+        indicatorColor="primary"
       >
-        <Tab value="one" label="Item One" />
-        <Tab value="two" label="Item Two" />
-        <Tab value="three" label="Item Three" />
+        <Tab className='worksTab' value="one" label="WORKS" />
+        <Tab className='projectsTab' value="two" label="PROJECTS" />
+        <Tab className='orgsTab' value="three" label="ORGANIZATIONS" disabled/>
       </Tabs>
     </Box>
   );
