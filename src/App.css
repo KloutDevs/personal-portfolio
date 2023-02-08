@@ -138,3 +138,71 @@
   box-shadow: none;
   font-size: 1.3rem;
 }
+
+/* Skills Page*/
+
+#Skills {
+  height: 90vh;
+}
+
+#skills-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+#skills-container .two-content{
+  display: flex;
+  flex-direction: row;
+  box-shadow: none;
+}
+#skills-container .two-content .MuiPaper-root	{
+  box-shadow: none;
+}
+
+#skills-container .two-content .MuiPaper-root .MuiAccordion-gutters	{
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);;
+  transition: all 0.3s;
+}
+
+#skills-container .two-content .MuiAccordionSummary-content	{
+  display: flex;
+  flex-direction: row;
+}
+
+
+#skills-container .two-content .MuiSvgIcon-root	{
+  font-size: 2.5rem;
+}
+
+.two-content .MuiAccordionSummary-content .accordionIcon{
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.two-content .MuiAccordionSummary-content .accordionTitleObject{
+  font-weight: bold;
+  margin-right: 8rem;
+}
+
+#listedProgramsData{
+  display: flex;
+  flex-direction: column !important;
+}
+
+.MuiListItemText-root{
+  min-width: 100% !important;
+}
+
+.MuiListItemText-root .MuiListItemText-primary{
+  font-weight: bold;
+}
+
+
+.MuiLinearProgress-root{
+  background-color: #d2a0a4 !important;
+}
+
+.css-17282r-MuiLinearProgress-bar1{
+  background-color: var(--customizeColor) !important;
+}

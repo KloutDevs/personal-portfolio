@@ -49,7 +49,7 @@ export default function LabelBottomNavigation() {
         setValue(newValue);
     };
 
-    const items = navArr.map((item) => <BottomNavigationAction label={item.label} value={item.value} icon={item.icon} />)
+    const items = navArr.map((item) => <BottomNavigationAction key={item.label} label={item.label} value={item.value} icon={item.icon} />)
 
     return (
         <BottomNavigation showLabels sx={{ width: 500 }} value={value} onChange={handleChange}>
