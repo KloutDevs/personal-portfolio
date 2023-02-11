@@ -45,7 +45,7 @@ export default function AutoGrid() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={3}>
-        <Grid item xs={1}>
+        <Grid item theme={CustomTheme} xs={1}>
           <List sx={styles.list} component="nav">
             <ListItem button>
               <ListItemIcon>
@@ -65,7 +65,7 @@ export default function AutoGrid() {
           </List>
         </Grid>
         <Grid id="presentationContainer" item xs={5}>
-          <Item id="presentation_item">
+          <Item theme={CustomTheme} id="presentation_item">
             <Typography id="title_typed" className='presentation_title' variant="h2" component="h3" >
               <Typed/>
             </Typography>
@@ -81,7 +81,7 @@ export default function AutoGrid() {
           </Item>
         </Grid>
         <Grid id="photoContainer" item xs>
-          <Item id='photoItem'>
+          <Item theme={CustomTheme} id='photoItem'>
             <Avatar
               alt="Nahuel Schmidt"
               src="/assets/HomePhoto_withoutBg.png"

@@ -12,12 +12,12 @@ import data from './portfolioData';
 import Count from './Counter';
 
 const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
+    backgroundColor: CustomTheme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...CustomTheme.typography.body2,
+    padding: CustomTheme.spacing(1),
     textAlign: 'center',
 
-    color: theme.palette.text.secondary,
+    color: CustomTheme.palette.text.secondary,
 }));
 
 const styles = {

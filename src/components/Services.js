@@ -34,6 +34,9 @@ const styles = {
 }
 
 export default function AutoGrid() {
+    function handClick(){
+        console.log("SERVICES: "+CustomTheme.palette.mode)
+    }
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid id="services-container" container spacing={3}>
@@ -85,7 +88,7 @@ export default function AutoGrid() {
                             </Typography>
                         </Grid>
                         <Grid className='service-viewmore'>
-                            <Button sx={styles.buttomKnowMore} variant="contained">VIEW MORE</Button>
+                            <Button sx={styles.buttomKnowMore} variant="contained" onClick={handClick}>VIEW MORE</Button>
                         </Grid>
                     </Item>
                     <Item className='service-item'>
