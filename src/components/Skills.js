@@ -19,20 +19,10 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import LinearProgress from "@mui/material/LinearProgress";
+import data from './portfolioData';
 
-const frontend = [
-    { name: "JavaScript", time: "2 años", progress: 90 },
-    { name: "Python", time: "1 año", progress: 50 },
-    { name: "Java", time: "6 meses", progress: 25 },
-    { name: "C++", time: "3 meses", progress: 10 },
-];
-
-const backend = [
-    { name: "JavaScript", time: "2 años", progress: 75 },
-    { name: "Python", time: "1 año", progress: 50 },
-    { name: "Java", time: "6 meses", progress: 25 },
-    { name: "C++", time: "3 meses", progress: 10 },
-];
+let front = data.langStats.front;
+let back = data.langStats.back
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -42,6 +32,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
     color: theme.palette.text.secondary,
 }));
+
+console.log(front);
 
 export default function AutoGrid() {
     return (
@@ -77,9 +69,9 @@ export default function AutoGrid() {
                             </AccordionSummary>
                             <AccordionDetails>
                                 <List>
-                                    {frontend.map((language) => (
-                                        <ListItem id="listedProgramsData" key={language.name}>
-                                            <ListItemText primary={language.name} secondary={language.time} />
+                                    {front.map((language) => (
+                                        <ListItem id="listedProgramsData" key={language.label}>
+                                            <ListItemText primary={language.label} secondary={language.time} />
                                             <ListItemText primary={<LinearProgress color="secondary" variant="determinate" value={language.progress} />} />
                                         </ListItem>
                                     ))}
@@ -130,9 +122,9 @@ export default function AutoGrid() {
                             </AccordionSummary>
                             <AccordionDetails>
                                 <List>
-                                    {backend.map((language) => (
-                                        <ListItem id="listedProgramsData" key={language.name}>
-                                            <ListItemText primary={language.name} secondary={language.time} />
+                                    {back.map((language) => (
+                                        <ListItem id="listedProgramsData" key={language.label}>
+                                            <ListItemText primary={language.label} secondary={language.time} />
                                             <ListItemText primary={<LinearProgress color="secondary" variant="determinate" value={language.progress} />} />
                                         </ListItem>
                                     ))}

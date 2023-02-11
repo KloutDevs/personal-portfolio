@@ -8,6 +8,8 @@ import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import { Typography } from '@mui/material';
 import CustomTheme from '../utils/theme';
+import data from './portfolioData';
+import Count from './Counter';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -32,7 +34,6 @@ const styles = {
     },
 
 };
-
 
 export default function AutoGrid() {
     return (
@@ -63,13 +64,13 @@ export default function AutoGrid() {
                         <Stack id="dates" direction="row" spacing={2}>
                             <Button sx={styles.buttomKnowMore} variant="contained">Download CV</Button>
                             <Item className='dateInfo'>
-                                <strong>+03 Years</strong>
+                                <strong>+{data.stats.timeDeveloping} years</strong>
                             </Item>
                             <Item className='dateInfo'>
-                                <strong>+11 Projects</strong>
+                                <strong>+{Count} Projects</strong>
                             </Item>
                             <Item className='dateInfo'>
-                                <strong>+15 Skills</strong>
+                                <strong>+{data.stats.totalSkills} Skills</strong>
                             </Item>
                         </Stack>
                     </Item>

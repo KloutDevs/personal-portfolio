@@ -1,6 +1,6 @@
 /* DEFINE CSS VARIABLES*/
 
-:root{
+:root {
   --darkPrimaryColor: #0b0e11;
   --darkSecondaryColor: #101419;
   --darkTerciaryColor: #3f4347;
@@ -10,26 +10,26 @@
 
 /* NAVBAR STYLES */
 
-.MuiAppBar-root{
+.MuiAppBar-root {
   box-shadow: none !important;
   padding: 1rem;
   background-color: #ffffff !important;
 }
 
 .MuiTypography-root {
-    color: #3f4347;
+  color: #3f4347;
 }
 
-.MuiBottomNavigation-root{
+.MuiBottomNavigation-root {
   margin-right: 3rem;
   background-color: transparent;
 }
 
-.MuiBottomBase-root{
+.MuiBottomBase-root {
   color: var(--white) !important;
 }
 
-.MuiBottomNavigationAction-root.Mui-selected{
+.MuiBottomNavigationAction-root.Mui-selected {
   color: var(--customizeColor) !important;
 }
 
@@ -46,19 +46,19 @@
   align-items: center;
 }
 
-#Home .MuiButtonBase-root:hover{
+#Home .MuiButtonBase-root:hover {
   background-color: transparent;
 }
 
-#Home .MuiButtonBase-root .MuiListItemIcon-root{
+#Home .MuiButtonBase-root .MuiListItemIcon-root {
   color: var(--darkTerciaryColor);
 }
 
-#Home .MuiButtonBase-root .MuiListItemIcon-root:hover{
+#Home .MuiButtonBase-root .MuiListItemIcon-root:hover {
   color: var(--darkSecondaryColor);
 }
 
-#Home .MuiGrid-container #presentation_item{
+#Home .MuiGrid-container #presentation_item {
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -66,20 +66,25 @@
   box-shadow: none;
 }
 
-#presentation_item .presentation_subtitle{
+#presentation_item .presentation_subtitle {
   margin-bottom: 1rem;
 }
 
-#presentation_item .present_btn_stack{
+#presentation_item .present_btn_stack {
   margin-top: 3rem;
 }
 
-#Home .MuiGrid-container #photoContainer{
+#presentation_item .present_btn_stack button:hover {
+  background-color: #e5e5e5;
+  color: #d3454f !important;
+}
+
+#Home .MuiGrid-container #photoContainer {
   overflow: hidden;
   position: relative;
 }
 
-#Home .MuiGrid-container #photoItem{
+#Home .MuiGrid-container #photoItem {
   overflow: hidden;
   box-shadow: none;
 }
@@ -95,23 +100,23 @@
   align-items: center;
 }
 
-#about-container #Title-container{
+#about-container #Title-container {
   box-shadow: none;
 }
 
-#about-container #two-content{
+#about-container #two-content {
   display: flex;
   flex-direction: row;
   align-items: center;
   box-shadow: none;
 }
 
-#avatar-container{
+#avatar-container {
   margin-right: 3rem;
   box-shadow: none;
 }
 
-#avatar-container #avatar-item{
+#avatar-container #avatar-item {
   border-radius: 2rem;
 }
 
@@ -123,7 +128,7 @@
   margin-top: 4rem;
 }
 
-#dates .dateInfo{
+#dates .dateInfo {
   box-shadow: none;
   font-size: 1.3rem;
 }
@@ -139,90 +144,92 @@
   align-items: center;
 }
 
-#Skills #Title-container{
+#Skills #Title-container {
   box-shadow: none;
 }
 
-#skills-container .two-content{
+#skills-container .two-content {
   display: flex;
   flex-direction: row;
   box-shadow: none;
 }
-#skills-container .two-content .MuiPaper-root	{
+
+#skills-container .two-content .MuiPaper-root {
   box-shadow: none;
 }
 
-#skills-container .two-content .MuiPaper-root .MuiAccordion-gutters	{
-  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);;
+#skills-container .two-content .MuiPaper-root .MuiAccordion-gutters {
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  ;
   transition: all 0.3s;
 }
 
-#skills-container .two-content .MuiAccordionSummary-content	{
+#skills-container .two-content .MuiAccordionSummary-content {
   display: flex;
   flex-direction: row;
 }
 
 
-#skills-container .two-content .MuiSvgIcon-root	{
+#skills-container .two-content .MuiSvgIcon-root {
   font-size: 2.5rem;
 }
 
-.two-content .MuiAccordionSummary-content .accordionIcon{
+.two-content .MuiAccordionSummary-content .accordionIcon {
   margin-right: 1rem;
   display: flex;
   align-items: center;
 }
 
-.two-content .MuiAccordionSummary-content .accordionTitleObject{
+.two-content .MuiAccordionSummary-content .accordionTitleObject {
   font-weight: bold;
   margin-right: 8rem;
 }
 
-#listedProgramsData{
+#listedProgramsData {
   display: flex;
   flex-direction: column !important;
 }
 
-.MuiListItemText-root{
+.MuiListItemText-root {
   min-width: 100% !important;
 }
 
-.MuiListItemText-root .MuiListItemText-primary{
+.MuiListItemText-root .MuiListItemText-primary {
   font-weight: bold;
 }
 
 
-.MuiLinearProgress-root{
+.MuiLinearProgress-root {
   background-color: #d2a0a4 !important;
 }
 
-.css-17282r-MuiLinearProgress-bar1{
+.css-17282r-MuiLinearProgress-bar1 {
   background-color: var(--customizeColor) !important;
 }
 
 /* Services PAGE*/
 
-#Services{
+#Services {
   height: 90vh;
 }
 
-#Services #Title-container{
+#Services #Title-container {
   box-shadow: none;
 }
 
-#services-container{
+#services-container {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.services-container{
+.services-container {
   display: flex;
   align-items: center;
   flex-direction: row !important;
 }
 
-.service-item{
+.service-item {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -231,40 +238,40 @@
   padding: 1.5rem !important;
 }
 
-.service-item:last-child{
+.service-item:last-child {
   margin-right: 0;
 }
 
-.service-header{
+.service-header {
   display: flex;
   flex-direction: row;
 }
 
-.service-header div{
+.service-header div {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.service-header .header-text h4{
+.service-header .header-text h4 {
   font-size: 1.2rem;
   color: #6f6f6f82;
 }
 
-.service-header .header-icon{
+.service-header .header-icon {
   margin-left: 2rem;
 }
 
-.service-title{
+.service-title {
   margin-top: 1rem;
   color: #2c2c2c;
 }
 
-.service-title h3{
+.service-title h3 {
   font-size: 2rem;
 }
 
-.service-viewmore{
+.service-viewmore {
   margin-top: 1rem;
 }
 
@@ -274,49 +281,50 @@
   height: 110vh;
 }
 
-#works-container{
+#works-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#works-container #Title-container{
+#works-container #Title-container {
   box-shadow: none;
 }
 
-#works-container .options-container .Mui-selected	{
+#works-container .options-container .Mui-selected {
   color: var(--customizeColor) !important;
 }
 
-.options-container .MuiTabs-indicator{
+.options-container .MuiTabs-indicator {
   background-color: #d3454f;
 }
 
-#works-container .works-galery{
+#works-container .works-galery {
   display: flex;
   flex-direction: row;
 }
 
-.works-galery .galery-container{
+.works-galery .galery-container {
   box-shadow: none;
 }
 
-.works-galery .galery-box::-webkit-scrollbar{
+.works-galery .galery-box::-webkit-scrollbar {
   display: none;
 }
-.works-galery .galery-filter{
+
+.works-galery .galery-filter {
   box-shadow: none;
 }
 
-.galery-filter .worksFilter .MuiToggleButtonGroup-root{
+.galery-filter .worksFilter .MuiToggleButtonGroup-root {
   box-shadow: none;
 }
 
-.galery-filter .worksFilter .css-ueukts-MuiButtonBase-root-MuiToggleButton-root{
+.galery-filter .worksFilter .css-ueukts-MuiButtonBase-root-MuiToggleButton-root {
   border: none;
 }
 
-.galery-filter .worksFilter .css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected{
+.galery-filter .worksFilter .css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected {
   color: var(--customizeColor);
 }
 
@@ -328,7 +336,7 @@
   align-items: center;
 }
 
-#contact-container{
+#contact-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -351,19 +359,57 @@
   max-width: 50% !important;
 }
 
-.container h4{
+.container h4 {
   color: var(--white);
   font-size: 2.2rem;
   margin-bottom: 1.5rem;
 }
 
-.container h5{
+.container h5 {
   color: var(--white);
   font-size: 1.1rem;
   margin-bottom: 2rem;
 }
 
 
-.avatarItem{
+.avatarItem {
   margin-left: 4rem;
+}
+
+.yellowTxt{
+  color: #d4de50;
+}
+
+.typed-cursor {
+  opacity: 1;
+  animation: typedjsBlink 0.7s infinite;
+  -webkit-animation: typedjsBlink 0.7s infinite;
+  animation: typedjsBlink 0.7s infinite;
+}
+
+@keyframes typedjsBlink {
+  50% {
+    opacity: 0.0;
+  }
+}
+
+@-webkit-keyframes typedjsBlink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.typed-fade-out {
+  opacity: 0;
+  transition: opacity .25s;
+  -webkit-animation: 0;
+  animation: 0;
 }

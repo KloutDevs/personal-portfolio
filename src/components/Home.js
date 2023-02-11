@@ -14,6 +14,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar'
 import CustomTheme from '../utils/theme';
+import Typed from './type.js';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -40,7 +41,6 @@ const styles = {
   
 };
 
-
 export default function AutoGrid() {
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -66,8 +66,8 @@ export default function AutoGrid() {
         </Grid>
         <Grid id="presentationContainer" item xs={5}>
           <Item id="presentation_item">
-            <Typography className='presentation_title' variant="h2" component="h3" >
-              I am Nahuel.
+            <Typography id="title_typed" className='presentation_title' variant="h2" component="h3" >
+              <Typed/>
             </Typography>
             <Typography className='presentation_subtitle' variant="h6" component="h5" >
               FullStack Developer
@@ -76,7 +76,7 @@ export default function AutoGrid() {
               I have been programming in Javascript for more than 3 years and exploring a huge number of frameworks, today I focus on reinforcing my knowledge by learning all the languages ​​and tools on the market to achieve the best performance and quality in both my projects and jobs.
             </Typography>
             <Stack className='present_btn_stack' spacing={2} direction="row">
-              <Button sx={styles.buttomKnowMore} variant="contained">Saber más</Button>
+              <Button sx={styles.buttomKnowMore} variant="contained">Know More</Button>
             </Stack>
           </Item>
         </Grid>
