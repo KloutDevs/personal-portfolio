@@ -67,7 +67,7 @@ export default function AutoGrid() {
                                 <strong>+{data.stats.timeDeveloping} years</strong>
                             </Item>
                             <Item className='dateInfo'>
-                                <strong>+{Count} Projects</strong>
+                                <strong>+{data.stats.totalProjects} Projects</strong>
                             </Item>
                             <Item className='dateInfo'>
                                 <strong>+{data.stats.totalSkills} Skills</strong>
