@@ -1,13 +1,11 @@
+/* GENERAL IMPORTS */
+
 import './App.css';
 import * as React from 'react';
+
+/* MATERIAL UI IMPORTS */
+
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Navbar from './components/appBar';
-import Home from './components/Home';
-import About from './components/About';
-import Skills from './components/Skills';
-import Services from './components/Services'
-import Works from './components/Works';
-import Contact from './components/Contact';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
@@ -19,20 +17,75 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
+import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import HomeIcon from '@mui/icons-material/Home';
+import CoPresentIcon from '@mui/icons-material/CoPresent';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import StoreIcon from '@mui/icons-material/Store';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
 
-const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Skills', 'Services', 'Works', 'Contact'];
 
-function App() {
+/* COMPONENTS IMPORT */
+
+import Navbar from './components/appBar';
+import Home from './components/Home';
+import About from './components/About';
+import Skills from './components/Skills';
+import Services from './components/Services'
+import Works from './components/Works';
+import Contact from './components/Contact';
+import ToggleButton from './components/ToggleButton';
+
+/* VARIABLES */
+
+const drawerWidth = 240; // On the Mobile View, the menu width is this.
+const navItems = [
+  {
+    label: "Home",
+    value: "home",
+    icon: <HomeIcon />
+  },
+  {
+    label: "About",
+    value: "about",
+    icon: <CoPresentIcon />
+  },
+  {
+    label: "Skills",
+    value: "skills",
+    icon: <EmojiEventsIcon />
+  },
+  {
+    label: "Services",
+    value: "services",
+    icon: <StoreIcon />
+  },
+  {
+    label: "Works",
+    value: "works",
+    icon: <BusinessCenterIcon />
+  },
+  {
+    label: "Contact",
+    value: "contactme",
+    icon: <ForwardToInboxIcon />
+  }
+]
+function App(props) {
+  const { window } = props; // Get the window
+  const container = window !== undefined ? () => window().document.body : undefined; // Trying get the body
   const [themeMode, setMode] = React.useState(false); // Default is Dark Mode
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-  const theme = createTheme({
+  const [mobileOpen, setMobileOpen] = React.useState(false); // Define if is Mobile
+  const [value, setValue] = React.useState(navItems[0].value);
+  const theme = createTheme({ // Create the theme
     palette: {
       mode: (themeMode) ? 'dark' : 'light',
       primary: {
@@ -44,9 +97,22 @@ function App() {
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
-  };
+  }; // Toggle the Mobile Mode
+
+  const handleModeChange = (e) => {
+    setMode((prevState) => !prevState);
+    _switch.current.classList.remove("Mui-checked");
+    console.log(_switch)
+  }; // Change the Theme
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  }; // Select a page
+
+  /* Additional */
 
   const drawer = (
+    // Draw the left responsive menu
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
         Portfolio
@@ -54,9 +120,9 @@ function App() {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item + "-appBar"} disablePadding>
+          <ListItem key={item.label + "-appBar"} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={item.label} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -64,7 +130,6 @@ function App() {
     </Box>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
     height: 34,
@@ -83,7 +148,7 @@ function App() {
         },
         '& + .MuiSwitch-track': {
           opacity: 1,
-          backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#c9c9c9',
+          backgroundColor: '#c9c9c9',
         },
       },
     },
@@ -107,16 +172,15 @@ function App() {
     },
     '& .MuiSwitch-track': {
       opacity: 1,
-      backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+      backgroundColor: '#aab4be',
       borderRadius: 20 / 2,
     },
-  }));
-  const handleModeChange = () => {
-    const newMode = theme.palette.mode === 'light' ? 'dark' : 'light';
-    theme.palette.mode = newMode;
-    console.log('NEW');
-    console.log(theme);
-  };
+  })); // Create the Theme Switch
+
+  // Create a items array for the navigation bar
+  const items = navItems.map((item, index) => <BottomNavigationAction key={`bna-${index}`} showLabel={true} label={item.label} value={item.value} icon={item.icon} />);
+  const _switch = React.useRef(null);
+
   return <ThemeProvider theme={theme}>
     <div className="App">
       <Box sx={{ display: 'flex' }}>
@@ -138,11 +202,13 @@ function App() {
               KloutDevs
             </Typography>
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-              <FormGroup>
-                <FormControlLabel
-                  control={<MaterialUISwitch theme={theme} sx={{ m: 1 }} defaultChecked onClick={handleModeChange} />}
-                />
-              </FormGroup>
+              <BottomNavigation showLabels sx={{ width: 500 }} value={value} onChange={handleChange}>
+                {items}
+                <FormGroup onChange={handleModeChange}>
+                  <FormControlLabel control={<MaterialUISwitch ref={_switch} onChange={handleModeChange} theme={theme} sx={{ m: 1 } } defaultChecked />}
+                  />
+                </FormGroup>
+              </BottomNavigation>
             </Box>
           </Toolbar>
         </AppBar>
@@ -164,7 +230,7 @@ function App() {
           </Drawer>
         </Box>
       </Box>
-      <section className="page_block Home" id="Home">
+      <section onClick={handleModeChange} className="page_block Home" id="Home">
         <Home />
       </section>
       <section className="page_block About" id="About">
