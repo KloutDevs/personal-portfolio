@@ -35,14 +35,12 @@ import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
 
 /* COMPONENTS IMPORT */
 
-import Navbar from './components/appBar';
 import Home from './components/Home';
 import About from './components/About';
 import Skills from './components/Skills';
 import Services from './components/Services'
 import Works from './components/Works';
 import Contact from './components/Contact';
-import ToggleButton from './components/ToggleButton';
 
 /* VARIABLES */
 
@@ -78,13 +76,13 @@ const navItems = [
     value: "contactme",
     icon: <ForwardToInboxIcon />
   }
-]
-function App(props) {
-  const { window } = props; // Get the window
-  const container = window !== undefined ? () => window().document.body : undefined; // Trying get the body
+];
+
+function App() {
   const [themeMode, setMode] = React.useState(false); // Default is Dark Mode
   const [mobileOpen, setMobileOpen] = React.useState(false); // Define if is Mobile
   const [value, setValue] = React.useState(navItems[0].value);
+  let home = React.useRef(null), about = React.useRef(null), skills = React.useRef(null);
   const theme = createTheme({ // Create the theme
     palette: {
       mode: (themeMode) ? 'dark' : 'light',
@@ -100,14 +98,23 @@ function App(props) {
   }; // Toggle the Mobile Mode
 
   const handleModeChange = (e) => {
-    setMode((prevState) => !prevState);
-    _switch.current.classList.remove("Mui-checked");
-    console.log(_switch)
+    setMode(!themeMode);
   }; // Change the Theme
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    let scrollTo = document.querySelector(`.${newValue}`).getBoundingClientRect().top + window.pageYOffset;
+    let appBar = document.querySelector('.MuiAppBar-root').offsetHeight;
+    if (window.scrollY !== scrollTo - appBar) window.scrollTo({ top: scrollTo - appBar, behavior: 'smooth' });
   }; // Select a page
+
+  window.addEventListener('scroll', (event) => {
+    console.log(about)
+    if(window.scrollY >= (about.current.offsetTop - 96) && about.current != null){
+      console.log('ABOUT');
+      handleChange(event, 'about');
+    }
+  });
 
   /* Additional */
 
@@ -148,7 +155,7 @@ function App(props) {
         },
         '& + .MuiSwitch-track': {
           opacity: 1,
-          backgroundColor: '#c9c9c9',
+          backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#c9c9c9',
         },
       },
     },
@@ -172,14 +179,13 @@ function App(props) {
     },
     '& .MuiSwitch-track': {
       opacity: 1,
-      backgroundColor: '#aab4be',
+      backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
       borderRadius: 20 / 2,
     },
   })); // Create the Theme Switch
 
   // Create a items array for the navigation bar
   const items = navItems.map((item, index) => <BottomNavigationAction key={`bna-${index}`} showLabel={true} label={item.label} value={item.value} icon={item.icon} />);
-  const _switch = React.useRef(null);
 
   return <ThemeProvider theme={theme}>
     <div className="App">
@@ -201,20 +207,21 @@ function App(props) {
             >
               KloutDevs
             </Typography>
-            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+            <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
               <BottomNavigation showLabels sx={{ width: 500 }} value={value} onChange={handleChange}>
                 {items}
-                <FormGroup onChange={handleModeChange}>
-                  <FormControlLabel control={<MaterialUISwitch ref={_switch} onChange={handleModeChange} theme={theme} sx={{ m: 1 } } defaultChecked />}
-                  />
-                </FormGroup>
               </BottomNavigation>
+              <FormGroup>
+                <FormControlLabel
+                  control={<MaterialUISwitch onClick={handleModeChange} checked={themeMode} sx={{ m: 1 }} />}
+                />
+              </FormGroup>
             </Box>
           </Toolbar>
         </AppBar>
         <Box component="nav">
           <Drawer
-            container={container}
+            container={document.body}
             variant="temporary"
             open={mobileOpen}
             onClose={handleDrawerToggle}
@@ -230,22 +237,22 @@ function App(props) {
           </Drawer>
         </Box>
       </Box>
-      <section onClick={handleModeChange} className="page_block Home" id="Home">
+      <section ref={home} className="page_block home" id="Home">
         <Home />
       </section>
-      <section className="page_block About" id="About">
+      <section ref={about} className="page_block about" id="About">
         <About />
       </section>
-      <section className="page_block Skills" id="Skills">
+      <section ref={skills} className="page_block skills" id="Skills">
         <Skills />
       </section>
-      <section className="page_block Services" id="Services">
+      <section className="page_block services" id="Services">
         <Services />
       </section>
-      <section className="page_block Works" id="Works">
+      <section className="page_block works" id="Works">
         <Works />
       </section>
-      <section className="page_block Contact" id="Contact">
+      <section className="page_block contact" id="Contact">
         <Contact />
       </section>
       <footer></footer>

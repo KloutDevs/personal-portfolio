@@ -33,8 +33,6 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-console.log(front);
-
 export default function AutoGrid() {
     return (
         <Box sx={{ flexGrow: 1 }}>
