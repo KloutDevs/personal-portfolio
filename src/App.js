@@ -129,7 +129,7 @@ function App() {
     } else if (scrollPosition >= contactPage) {
       setCurrentPage('contact');
     }
-  };
+  }; // Handle the Navbar on scroll
 
   /* Additional */
 
@@ -260,10 +260,10 @@ function App() {
         </Box>
       </Box>
       <section className="page_block home" id="Home">
-        <Home />
+        <Home theme={theme} />
       </section>
       <section className="page_block about" id="About">
-        <About />
+        <About theme={theme} />
       </section>
       <section  className="page_block skills" id="Skills">
         <Skills />

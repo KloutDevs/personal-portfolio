@@ -133,6 +133,10 @@
   font-size: 1.3rem;
 }
 
+#about-container .cv-download-btn{
+  text-decoration: none;
+}
+
 /* Skills Page*/
 
 #Skills {
