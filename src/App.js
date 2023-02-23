@@ -1,46 +1,45 @@
 /* GENERAL IMPORTS */
 
-import './App.css';
 import * as React from 'react';
+import './App.css';
 
 /* MATERIAL UI IMPORTS */
 
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import CoPresentIcon from '@mui/icons-material/CoPresent';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
+import HomeIcon from '@mui/icons-material/Home';
+import MenuIcon from '@mui/icons-material/Menu';
+import StoreIcon from '@mui/icons-material/Store';
+import AppBar from '@mui/material/AppBar';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import AppBar from '@mui/material/AppBar';
-import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import { createTheme, styled, ThemeProvider } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import HomeIcon from '@mui/icons-material/Home';
-import CoPresentIcon from '@mui/icons-material/CoPresent';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import StoreIcon from '@mui/icons-material/Store';
-import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
 
 /* COMPONENTS IMPORT */
 
-import Home from './components/Home';
 import About from './components/About';
-import Skills from './components/Skills';
-import Services from './components/Services'
-import Works from './components/Works';
 import Contact from './components/Contact';
+import Home from './components/Home';
+import Services from './components/Services';
+import Skills from './components/Skills';
+import Works from './components/Works';
 
 /* VARIABLES */
 
@@ -73,7 +72,7 @@ const navItems = [
   },
   {
     label: "Contact",
-    value: "contactme",
+    value: "contact",
     icon: <ForwardToInboxIcon />
   }
 ];
@@ -81,8 +80,7 @@ const navItems = [
 function App() {
   const [themeMode, setMode] = React.useState(false); // Default is Dark Mode
   const [mobileOpen, setMobileOpen] = React.useState(false); // Define if is Mobile
-  const [value, setValue] = React.useState(navItems[0].value);
-  let home = React.useRef(null), about = React.useRef(null), skills = React.useRef(null);
+  const [currentPage, setCurrentPage] = React.useState(navItems[0].value);
   const theme = createTheme({ // Create the theme
     palette: {
       mode: (themeMode) ? 'dark' : 'light',
@@ -102,19 +100,36 @@ function App() {
   }; // Change the Theme
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-    let scrollTo = document.querySelector(`.${newValue}`).getBoundingClientRect().top + window.pageYOffset;
-    let appBar = document.querySelector('.MuiAppBar-root').offsetHeight;
-    if (window.scrollY !== scrollTo - appBar) window.scrollTo({ top: scrollTo - appBar, behavior: 'smooth' });
+    if (currentPage !== newValue) { // If the newValue isn't already selected ->
+      let scrollTo = document.querySelector(`.${newValue}`).getBoundingClientRect().top + window.pageYOffset;
+      let appBar = document.querySelector('.MuiAppBar-root').offsetHeight;
+      window.scrollTo({ top: scrollTo - appBar, behavior: 'smooth' }); // Scroll To the selectedPage
+    }
   }; // Select a page
 
-  window.addEventListener('scroll', (event) => {
-    console.log(about)
-    if(window.scrollY >= (about.current.offsetTop - 96) && about.current != null){
-      console.log('ABOUT');
-      handleChange(event, 'about');
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+    const navbarHeight = document.querySelector('.MuiAppBar-root').offsetHeight;
+    const homePage = document.querySelector('.home').offsetTop - navbarHeight * 4;
+    const aboutPage = document.querySelector('.about').offsetTop - navbarHeight * 4;
+    const skillsPage = document.querySelector('.skills').offsetTop - navbarHeight * 4;
+    const servicesPage = document.querySelector('.services').offsetTop - navbarHeight * 4;
+    const worksPage = document.querySelector('.works').offsetTop - navbarHeight * 4;
+    const contactPage = document.querySelector('.contact').offsetTop - navbarHeight * 4;
+    if (scrollPosition >= homePage && scrollPosition < aboutPage) {
+      setCurrentPage('home');
+    } else if (scrollPosition >= aboutPage && scrollPosition < skillsPage) {
+      setCurrentPage('about');
+    } else if (scrollPosition >= skillsPage && scrollPosition < servicesPage) {
+      setCurrentPage('skills');
+    } else if (scrollPosition >= servicesPage && scrollPosition < worksPage) {
+      setCurrentPage('services');
+    } else if (scrollPosition >= worksPage && scrollPosition < contactPage) {
+      setCurrentPage('works');
+    } else if (scrollPosition >= contactPage) {
+      setCurrentPage('contact');
     }
-  });
+  };
 
   /* Additional */
 
@@ -187,6 +202,13 @@ function App() {
   // Create a items array for the navigation bar
   const items = navItems.map((item, index) => <BottomNavigationAction key={`bna-${index}`} showLabel={true} label={item.label} value={item.value} icon={item.icon} />);
 
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return <ThemeProvider theme={theme}>
     <div className="App">
       <Box sx={{ display: 'flex' }}>
@@ -208,7 +230,7 @@ function App() {
               KloutDevs
             </Typography>
             <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
-              <BottomNavigation showLabels sx={{ width: 500 }} value={value} onChange={handleChange}>
+              <BottomNavigation showLabels onChange={handleChange} sx={{ width: 500 }} value={currentPage} >
                 {items}
               </BottomNavigation>
               <FormGroup>
@@ -237,13 +259,13 @@ function App() {
           </Drawer>
         </Box>
       </Box>
-      <section ref={home} className="page_block home" id="Home">
+      <section className="page_block home" id="Home">
         <Home />
       </section>
-      <section ref={about} className="page_block about" id="About">
+      <section className="page_block about" id="About">
         <About />
       </section>
-      <section ref={skills} className="page_block skills" id="Skills">
+      <section  className="page_block skills" id="Skills">
         <Skills />
       </section>
       <section className="page_block services" id="Services">

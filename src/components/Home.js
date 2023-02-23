@@ -84,7 +84,7 @@ export default function AutoGrid() {
           <Item theme={CustomTheme} id='photoItem'>
             <Avatar
               alt="Nahuel Schmidt"
-              src="/assets/HomePhoto_withoutBg.png"
+              src="/assets/programming.png"
               sx={{ width: 425, height: 425 }}
             />
           </Item>
