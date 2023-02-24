@@ -19,11 +19,6 @@ export default function AutoGrid() {
                         CONTACT ME
                     </Button>
                 </Grid>
-                <Avatar className='avatarItem'
-                    alt="Nahuel Schmidt"
-                    src="/assets/AboutPhoto.jpeg"
-                    sx={{ width: 320, height: 320 }}
-                />
             </Grid>
         </Box>
     );

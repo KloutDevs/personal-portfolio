@@ -277,7 +277,9 @@ function App() {
       <section className="page_block contact" id="Contact">
         <Contact />
       </section>
-      <footer></footer>
+      <footer>
+        This is the footer lol
+      </footer>
     </div>
   </ThemeProvider>;
 }

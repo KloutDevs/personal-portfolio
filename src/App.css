@@ -8,6 +8,10 @@
   --white: #ffffff;
 }
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
 /* NAVBAR STYLES */
 
 .MuiAppBar-root {
@@ -141,6 +145,7 @@
 
 #Skills {
   height: 90vh;
+  overflow: hidden;
 }
 
 #skills-container {
@@ -189,6 +194,17 @@
   margin-right: 8rem;
 }
 
+.two-content .MuiAccordionDetails-root{
+  overflow: scroll;
+  max-height: 25rem !important;
+}
+.two-content .MuiAccordionDetails-root::-webkit-scrollbar {
+  display: none;
+}
+.two-content .MuiImageList-root::-webkit-scrollbar {
+  display: none;
+}
+
 #listedProgramsData {
   display: flex;
   flex-direction: column !important;
@@ -209,6 +225,15 @@
 
 .css-17282r-MuiLinearProgress-bar1 {
   background-color: var(--customizeColor) !important;
+}
+
+.listedProgramsText{
+  display: flex;
+  align-self: flex-start;
+}
+
+.lpSecText{
+  margin-right: -2rem;
 }
 
 /* Services PAGE*/
@@ -379,6 +404,16 @@
 .avatarItem {
   margin-left: 4rem;
 }
+
+/* FOOTER */
+
+footer {
+  background-color: var(--darkSecondaryColor);
+  height: 30vh;
+  width: 100vw;
+}
+
+/* ADDITIONAL */
 
 .yellowTxt{
   color: #d4de50;
