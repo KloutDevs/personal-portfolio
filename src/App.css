@@ -1,3 +1,8 @@
+/* FONTS IMPORT */
+
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+/* font-family: 'Righteous', cursive; */
+
 /* DEFINE CSS VARIABLES*/
 
 :root {
@@ -409,8 +414,18 @@
 
 footer {
   background-color: var(--darkSecondaryColor);
-  height: 30vh;
+  height: 40vh;
   width: 100vw;
+  margin: 0;
+}
+
+footer .boxContainer{
+  justify-content: center;
+  margin: 0;
+}
+
+footer .boxContainer ul a{
+  text-decoration: none;
 }
 
 /* ADDITIONAL */

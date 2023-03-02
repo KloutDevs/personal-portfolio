@@ -52,7 +52,7 @@ export default function AutoGrid(props) {
 
   return (
     <ThemeProvider theme={props.theme}>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{flexGrow: 1 }}>
         <Grid container spacing={3}>
           <Grid item theme={props.theme} xs={1}>
             <List sx={styles.list} component="nav">

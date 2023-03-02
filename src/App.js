@@ -40,6 +40,7 @@ import Home from './components/Home';
 import Services from './components/Services';
 import Skills from './components/Skills';
 import Works from './components/Works';
+import Footer from './components/Footer';
 
 /* VARIABLES */
 
@@ -278,7 +279,7 @@ function App() {
         <Contact />
       </section>
       <footer>
-        This is the footer lol
+        <Footer />
       </footer>
     </div>
   </ThemeProvider>;
