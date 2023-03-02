@@ -93,7 +93,8 @@ export default function AutoGrid() {
     const [filter, setFilter] = React.useState(null);
     const [items, setItems] = React.useState(itemData);
 
-    function updateItems(category, filter){
+    function updateItems(updateCategory, updateFilter){
+        console.log('------------------[ UPDATE ITEMS ]---------------');
         let categories = {
             one: "all",
             two: "works",
@@ -101,32 +102,48 @@ export default function AutoGrid() {
             four: "organizations"
         }
         let newItems = [];
-        items.forEach((item) => {
-            console.log(`I-CATEGORY ${item.category}   S-CATEGORY ${categories[category]}`);
-            console.log(`I-STATE ${item.state}     S-FILTER ${filter}`);
-            if(item.category === categories[category] && filter !== null && item.state === filter){
+        console.log(`UPDATED C-${updateCategory} F-${updateFilter}`);
+        console.log(`ACTUALLY C-${category} F-${filter}`);
+        itemData.forEach((item) => {
+/*             console.log(`I-CATEGORY ${item.category}   S-CATEGORY ${categories[category]}`);
+            console.log(`I-STATE ${item.state}     S-FILTER ${filter}`); */
+            if(item.category === categories[updateCategory] && item.state === updateFilter){
+                console.log('CATEGORIA Y FILTRO IGUAL');
                 newItems.push(item);
-            }else if(categories[category] === 'all' && filter !== null && item.state === filter){
+            }else if(item.category === categories[updateCategory] && updateFilter === null){
+                console.log('CATEGORIA IGUAL');
                 newItems.push(item);
-            }else{
+            }else if(categories[updateCategory] === 'all' && item.state === updateFilter){
+                console.log('CATEGORIA ALL Y FILTRO IGUAL');
+                newItems.push(item);
+            }else if(categories[updateCategory] === 'all' && updateFilter === null){
+                console.log('CATEGORIA ALL Y SIN FILTRO (TODA LA DATA)');
                 newItems = itemData;
             }
-            console.log('NEW ITEMS');
-            console.log(newItems);
         });
         setItems(newItems);
         console.log('ESTABLISHED ITEMS')
-        console.log(items);
+        console.log(newItems);
+        console.log('-------------[ END UPDATE ITEMS ]---------------');
     }
 
     const handleCategory = (event, newcategory) => {
+        console.log('-----------[ HANDLE CATEGORY ]----------');
         setcategory(newcategory);
+        console.log('CATEGORY UPDATED: '+category);
+        console.log('CATEGORY OBTAINED: '+newcategory);
         updateItems(newcategory, filter);
+        console.log('---------[ END HANDLE CATEGORY ]-----------');
     };
 
     const handleFilter = (event, nextFilter) => {
+        console.log('-----------[ HANDLE FILTER ]----------');
         setFilter(nextFilter);
+        console.log('FILTER UPDATED: '+filter);
+        console.log('FILTER OBTAINED: '+nextFilter);
+        console.log('IN-HANDLE-FILTER-CATEGORY: '+category);
         updateItems(category, nextFilter);
+        console.log('----------[ END HANDLE FILTER ]------------');
     };
 
     return (
@@ -183,13 +200,13 @@ export default function AutoGrid() {
                             exclusive
                             onChange={handleFilter}
                         >
-                            <ToggleButton className='okButton' value="okBtn" aria-label="okBtn">
+                            <ToggleButton className='okButton' value="finalized" aria-label="okBtn">
                                 <CheckCircle />
                             </ToggleButton>
-                            <ToggleButton className='inProcessButton' value="inProcessButton" aria-label="inProcessButton">
+                            <ToggleButton className='inProcessButton' value="in-progress" aria-label="inProcessButton">
                                 <Error />
                             </ToggleButton>
-                            <ToggleButton className='notstartedButton' value="notstartedButton" aria-label="notstartedButton">
+                            <ToggleButton className='notstartedButton' value="not-started" aria-label="notstartedButton">
                                 <Dangerous />
                             </ToggleButton>
                         </ToggleButtonGroup>
