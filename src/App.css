@@ -1,7 +1,6 @@
 /* FONTS IMPORT */
 
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
-/* font-family: 'Righteous', cursive; */
 
 /* DEFINE CSS VARIABLES*/
 
@@ -13,9 +12,9 @@
   --white: #ffffff;
 }
 
-/* body::-webkit-scrollbar {
+body::-webkit-scrollbar {
     display: none;
-} */
+} 
 
 /* NAVBAR STYLES */
 
@@ -417,15 +416,48 @@ footer {
   height: 40vh;
   width: 100vw;
   margin: 0;
+  overflow: hidden;
 }
 
 footer .boxContainer{
   justify-content: center;
   margin: 0;
+  padding: 1rem;
 }
 
 footer .boxContainer ul a{
   text-decoration: none;
+}
+
+footer .boxContainer .MuiTypography-root{
+  color: #fff;
+  font-weight: 200;
+}
+
+footer .boxContainer .categoryText .MuiTypography-root{
+  color: #d3454f !important;
+}
+
+footer .boxContainer .Social {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .boxContainer .Social .css-yw020d-MuiAccordionSummary-expandIconWrapper {
+  color: #fff;
+}
+
+footer .boxContainer .Social .MuiListItemIcon-root{
+  max-width: 24px;
+  min-width: 1.5rem;
+  color: #ffffff;
+}
+
+footer .boxContainer .Social .brand{
+  font-family: 'Righteous', cursive ;
+  color: #d3454f;
 }
 
 /* ADDITIONAL */

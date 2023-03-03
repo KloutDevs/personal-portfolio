@@ -1,10 +1,16 @@
 import * as React from 'react';
-import { Box, Grid, Typography, List, ListItem, ListItemText } from '@mui/material/';
+import { Box, Grid, Typography, Accordion, AccordionSummary, List, ListItem, ListItemText, ListItemIcon } from '@mui/material/';
+import { Twitter, GitHub, LinkedIn, WhatsApp, ExpandMore } from '@mui/icons-material';
 
 const styles = {
     list: {
         width: '100%',
-        bgColor: 'background.paper'
+        bgColor: 'background.paper',
+    },
+    row: {
+        bgColor: 'background.paper',
+        display: 'flex',
+        flexDirection: 'row'
     }
 }
 
@@ -13,12 +19,67 @@ export default function Footer() {
         <Box sx={{ flexGrow: 1 }}>
             <Grid className="boxContainer" container spacing={3}>
                 {/* Sections */}
-                <Grid sx={{ flexGrow: 1 }} className="Social">
-                    <Typography variant="h3" component="h4" >Code Is Fun</Typography>
+                <Grid sx={{ flexGrow: 1.2 }} className="Social">
+                    <Typography className="brand" variant="h3" component="h4" >Code Is</Typography>
+                    <Typography className="brand" variant="h3" component="h4" >Fun</Typography>
                     {/* 
                         Theme and Lang Buttons
                         Social Btns
                     */}
+                    <List sx={styles.row} component="nav">
+                        <a rel='noreferrer author' href='https://linkedin.com/in/nahuel-schmidt-720b57263/' target="_blank">
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <Twitter />
+                                </ListItemIcon>
+                            </ListItem>
+                        </a>
+                        <a rel='noreferrer author' href='/download/cv-nahuel-schmidt.pdf' download="cv-nahuel-schmidt.pdf">
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <GitHub />
+                                </ListItemIcon>
+                            </ListItem>
+                        </a>
+                        <a rel='noreferrer author' href='https://github.com/KloutDevs' target="_blank">
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <LinkedIn />
+                                </ListItemIcon>
+                            </ListItem>
+                        </a>
+                        <a rel='noreferrer author' href='https://github.com/KloutDevs' target="_blank">
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <WhatsApp />
+                                </ListItemIcon>
+                            </ListItem>
+                        </a>
+                    </List>
+                    <List sx={styles.row} component="nav">
+                            <ListItem button>
+                                <Accordion disabled>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMore />}
+                                        aria-controls="panel3a-content"
+                                        id="panel3a-header"
+                                    >
+                                        <Typography>Language</Typography>
+                                    </AccordionSummary>
+                                </Accordion>
+                            </ListItem>
+                            <ListItem button>
+                                <Accordion disabled>
+                                    <AccordionSummary
+                                        expandIcon={<ExpandMore />}
+                                        aria-controls="panel3a-content"
+                                        id="panel3a-header"
+                                    >
+                                        <Typography>Theme</Typography>
+                                    </AccordionSummary>
+                                </Accordion>
+                            </ListItem>
+                    </List>
                 </Grid>
                 <Grid sx={{ flexGrow: 1 }} className="Assets">
                     {/* 
@@ -32,26 +93,26 @@ export default function Footer() {
                     */}
                     <List sx={styles.list} dense={true}>
                         <ListItem>
-                            <ListItemText
+                            <ListItemText className='categoryText'
                                 primary="Assets"
                             />
                         </ListItem>
                         <ListItem>
-                            <a rel='noreferrer assets' href='/' target="_blank">
+                            <a rel='noreferrer assets' href='/certifies' target="_blank">
                                 <ListItemText
                                     primary="/certifies"
                                 />
                             </a>
                         </ListItem>
                         <ListItem>
-                            <a rel='noreferrer assets' href='/' target="_blank">
+                            <a rel='noreferrer assets' href='/designs' target="_blank">
                                 <ListItemText
                                     primary="/designs"
                                 />
                             </a>
                         </ListItem>
                         <ListItem>
-                            <a rel='noreferrer assets' href='/' target="_blank">
+                            <a rel='noreferrer assets' href='/imgs' target="_blank">
                                 <ListItemText
                                     primary="/imgs"
                                 />
@@ -65,7 +126,7 @@ export default function Footer() {
                             </a>
                         </ListItem>
                         <ListItem>
-                            <a rel='noreferrer assets' href='/' target="_blank">
+                            <a rel='noreferrer assets' href='/galery' target="_blank">
                                 <ListItemText
                                     primary="/galery"
                                 />
@@ -84,26 +145,26 @@ export default function Footer() {
                      */}
                     <List sx={styles.list} dense={true}>
                         <ListItem>
-                            <ListItemText
+                            <ListItemText className='categoryText'
                                 primary="Support"
                             />
                         </ListItem>
                         <ListItem>
-                            <a rel='noreferrer support' href='/' target="_blank">
+                            <a rel='noreferrer support' href='/comingsoon' target="_blank">
                                 <ListItemText
                                     primary="Discord"
                                 />
                             </a>
                         </ListItem>
                         <ListItem>
-                            <a rel='noreferrer support' href='/' target="_blank">
+                            <a rel='noreferrer support' href='/comingsoon' target="_blank">
                                 <ListItemText
                                     primary="Whatsapp"
                                 />
                             </a>
                         </ListItem>
                         <ListItem>
-                            <a rel='noreferrer support' href='/' target="_blank">
+                            <a rel='noreferrer support' href='/comingsoon' target="_blank">
                                 <ListItemText
                                     primary="Telegram"
                                 />
@@ -123,7 +184,7 @@ export default function Footer() {
                      */}
                     <List sx={styles.list} dense={true}>
                         <ListItem>
-                            <ListItemText
+                            <ListItemText className='categoryText'
                                 primary="Organizations"
                             />
                         </ListItem>
