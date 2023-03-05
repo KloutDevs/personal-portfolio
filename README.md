@@ -35,8 +35,8 @@ I am studying and testing the technologies mentioned above for use in the market
 |Page|Status|
 |--|--|
 |Navbar|🟡|
-|Home|🟡|
-|About|🟡|
+|Home|🟢|
+|About|🟢|
 |Skills|🟡|
 |Services|🟡|
 |Works|🟡|

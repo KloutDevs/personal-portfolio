@@ -5,11 +5,15 @@
 /* DEFINE CSS VARIABLES*/
 
 :root {
-  --darkPrimaryColor: #0b0e11;
-  --darkSecondaryColor: #101419;
-  --darkTerciaryColor: #3f4347;
+  --darkPrimaryColor: #121212;
+  --darkSecondaryColor: #0c0c0c;
+  --darkTerciaryColor: #414141;
   --customizeColor: #d3454f;
   --white: #ffffff;
+}
+
+* {
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
 }
 
 body::-webkit-scrollbar {
@@ -21,7 +25,6 @@ body::-webkit-scrollbar {
 .MuiAppBar-root {
   box-shadow: none !important;
   padding: 1rem;
-  background-color: #ffffff !important;
 }
 
 .MuiTypography-root {
@@ -57,15 +60,6 @@ body::-webkit-scrollbar {
 #Home .MuiButtonBase-root:hover {
   background-color: transparent;
 }
-
-#Home .MuiButtonBase-root .MuiListItemIcon-root {
-  color: var(--darkTerciaryColor);
-}
-
-#Home .MuiButtonBase-root .MuiListItemIcon-root:hover {
-  color: var(--darkSecondaryColor);
-}
-
 #Home .MuiGrid-container #presentation_item {
   display: flex;
   align-items: flex-start;
@@ -148,8 +142,7 @@ body::-webkit-scrollbar {
 /* Skills Page*/
 
 #Skills {
-  height: 90vh;
-  overflow: hidden;
+  min-height: 90vh;
 }
 
 #skills-container {
@@ -220,15 +213,6 @@ body::-webkit-scrollbar {
 
 .MuiListItemText-root .MuiListItemText-primary {
   font-weight: bold;
-}
-
-
-.MuiLinearProgress-root {
-  background-color: #d2a0a4 !important;
-}
-
-.css-17282r-MuiLinearProgress-bar1 {
-  background-color: var(--customizeColor) !important;
 }
 
 .listedProgramsText{

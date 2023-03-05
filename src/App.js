@@ -89,6 +89,10 @@ function App() {
         main: '#d3454f;',
         dark: '#933037'
       },
+      secondary: {
+        main: '#d3454f;',
+        dark: '#933037'
+      }
     },
   });
 
@@ -101,6 +105,7 @@ function App() {
   }; // Change the Theme
 
   const handleChange = (event, newValue) => {
+    console.log(event);
     if (currentPage !== newValue) { // If the newValue isn't already selected ->
       let scrollTo = document.querySelector(`.${newValue}`).getBoundingClientRect().top + window.pageYOffset;
       let appBar = document.querySelector('.MuiAppBar-root').offsetHeight;
@@ -132,27 +137,6 @@ function App() {
     }
   }; // Handle the Navbar on scroll
 
-  /* Additional */
-
-  const drawer = (
-    // Draw the left responsive menu
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        Portfolio
-      </Typography>
-      <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item.label + "-appBar"} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item.label} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
     height: 34,
@@ -171,7 +155,7 @@ function App() {
         },
         '& + .MuiSwitch-track': {
           opacity: 1,
-          backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#c9c9c9',
+          backgroundColor: theme.palette.mode === 'dark' ? '#414141' : '#c9c9c9',
         },
       },
     },
@@ -195,13 +179,66 @@ function App() {
     },
     '& .MuiSwitch-track': {
       opacity: 1,
-      backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+      backgroundColor: theme.palette.mode === 'dark' ? '#414141' : '#c9c9c9',
       borderRadius: 20 / 2,
     },
   })); // Create the Theme Switch
 
   // Create a items array for the navigation bar
   const items = navItems.map((item, index) => <BottomNavigationAction key={`bna-${index}`} showLabel={true} label={item.label} value={item.value} icon={item.icon} />);
+
+  /* All extra styles */
+
+  let styles = {
+    appBar: {
+      backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#fff'
+    },
+    appBarButton: {
+      marginRight: 2,
+      display: { sm: 'none' }
+    },
+    appBarTitle: {
+      flexGrow: 1,
+      display: { xs: 'none', sm: 'block' },
+      color: theme.palette.mode === 'dark' ? '#ffffffd8' : 'rgba(0, 0, 0, 0.8)',
+    },
+    normalNavigation: {
+      display: { xs: 'none', sm: 'flex' },
+      '& .MuiBottomNavigation-root': { backgroundColor: 'transparent' }
+    },
+    drawer: {
+      display: { xs: 'block', sm: 'none' },
+      '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+      '& .MuiTypography-root': { my: 2, color: theme.palette.mode === 'dark' ? '#ffffffd8' : '#000' },
+      '& .MuiListItemButton-root': { textAlign: 'center' },
+      '& .MuiBox-root': { textAlign: 'center' }
+    }
+  }
+
+  /* Additional */
+
+  const drawer = (
+    // Draw the left responsive menu
+    <Box onClick={handleDrawerToggle}>
+      <Typography variant="h6">
+        Portfolio
+      </Typography>
+      <Divider />
+      <List>
+        {navItems.map((item) => (
+          <ListItem key={item.label + "-appBar"} disablePadding>
+            <ListItemButton>
+              <ListItemText primary={item.label} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
+  /* This code use the React Effect Hook 
+     for manage the scroll.
+  */
 
   React.useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -214,23 +251,23 @@ function App() {
     <div className="App">
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <AppBar component="nav" color='transparent'>
+        <AppBar component="nav" sx={styles.appBar} color="transparent">
           <Toolbar>
             <IconButton
               color="inherit"
               onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: 'none' } }}
+              sx={styles.appBarButton}
             >
               <MenuIcon />
             </IconButton>
             <Typography
               variant="h6"
               component="div"
-              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+              sx={styles.appBarTitle}
             >
               KloutDevs
             </Typography>
-            <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
+            <Box sx={styles.normalNavigation}>
               <BottomNavigation showLabels onChange={handleChange} sx={{ width: 500 }} value={currentPage} >
                 {items}
               </BottomNavigation>
@@ -251,10 +288,7 @@ function App() {
             ModalProps={{
               keepMounted: true, // Better open performance on mobile.
             }}
-            sx={{
-              display: { xs: 'block', sm: 'none' },
-              '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-            }}
+            sx={styles.drawer}
           >
             {drawer}
           </Drawer>
@@ -266,20 +300,20 @@ function App() {
       <section className="page_block about" id="About">
         <About theme={theme} />
       </section>
-      <section  className="page_block skills" id="Skills">
-        <Skills />
+      <section className="page_block skills" id="Skills">
+        <Skills theme={theme} />
       </section>
       <section className="page_block services" id="Services">
-        <Services />
+        <Services theme={theme} />
       </section>
       <section className="page_block works" id="Works">
-        <Works />
+        <Works theme={theme} />
       </section>
       <section className="page_block contact" id="Contact">
-        <Contact />
+        <Contact theme={theme} />
       </section>
       <footer>
-        <Footer />
+        <Footer theme={theme} />
       </footer>
     </div>
   </ThemeProvider>;

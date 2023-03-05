@@ -8,9 +8,10 @@ IN THE MEANTIME, I'LL JUST USE AN OBJECT
 
 let data = {
     links: {
-        linkedin: "",
-        github: "",
-        cv: ""
+        linkedin: "https://linkedin.com/in/nahuel-schmidt-720b57263/",
+        github: "https://github.com/KloutDevs",
+        cv: "cv-nahuel-schmidt.pdf",
+        download: "/download/cv-nahuel-schmidt.pdf"
     },
     stats: {
         timeDeveloping: "3",
@@ -123,7 +124,21 @@ let data = {
         certifies: [],
         projects: []
     },
-    services: {},
+    services: {
+        front: {
+            title: "Front-End Services",
+            body: "Ipsum id nulla laboris proident aliquip reprehenderit. Dolore culpa commodo et ipsum et occaecat non dolor deserunt sit. Ea excepteur magna esse officia. Mollit reprehenderit sint elit eiusmod magna et consectetur ad.",
+            actions: "",
+            totalServices: 1
+        },
+        back: {
+            title: "Back-End Services",
+            body: "Consequat ex laborum nulla mollit ex dolore sunt exercitation laborum qui commodo. Ut aute eiusmod veniam dolore nisi consequat sit deserunt. Ut aliquip elit pariatur nisi exercitation eiusmod sint sint. Eiusmod ad minim officia quis magna velit est. Reprehenderit ex excepteur duis adipisicing sit in in.",
+            actions: "",
+            totalServices: 1
+        },
+        designs: {}
+    },
     works: {},
     projects: {},
     organizations: {}

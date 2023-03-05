@@ -1,16 +1,19 @@
-import { CheckCircle, Dangerous, Error } from '@mui/icons-material';
+import { CheckCircle, Cancel, Error } from '@mui/icons-material';
 import { Box, Grid, ImageList, ImageListItem, Paper, Tab, Tabs, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import * as React from 'react';
 
 const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#fff',
     ...theme.typography.body2,
+    backgroundImage: 'none',
     padding: theme.spacing(1),
     textAlign: 'center',
-
-    color: theme.palette.text.secondary,
-}));
+    '& .MuiTypography-root': {
+        color: theme.palette.mode === 'dark' ? '#ffffffd8' : 'rgba(0, 0, 0, 0.6)',
+    },
+    color: theme.palette.mode === 'dark' ? '#ffffffd8' : 'rgba(0, 0, 0, 0.7)',
+})); // Paper Styles
 
 const itemData = [
     {
@@ -207,7 +210,7 @@ export default function AutoGrid() {
                                 <Error />
                             </ToggleButton>
                             <ToggleButton className='notstartedButton' value="not-started" aria-label="notstartedButton">
-                                <Dangerous />
+                                <Cancel />
                             </ToggleButton>
                         </ToggleButtonGroup>
                     </Item>

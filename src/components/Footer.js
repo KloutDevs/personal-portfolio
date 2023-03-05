@@ -1,6 +1,13 @@
+/* GENERAL IMPORTS */
 import * as React from 'react';
+import data from './portfolioData';
+
+/* MATERIAL UI IMPORTS */
+
 import { Box, Grid, Typography, Accordion, AccordionSummary, List, ListItem, ListItemText, ListItemIcon } from '@mui/material/';
 import { Twitter, GitHub, LinkedIn, WhatsApp, ExpandMore } from '@mui/icons-material';
+
+/* All extra Styles */
 
 const styles = {
     list: {
@@ -27,21 +34,21 @@ export default function Footer() {
                         Social Btns
                     */}
                     <List sx={styles.row} component="nav">
-                        <a rel='noreferrer author' href='https://linkedin.com/in/nahuel-schmidt-720b57263/' target="_blank">
+                        <a rel='noreferrer author' href={data.links.linkedin} target="_blank">
                             <ListItem button>
                                 <ListItemIcon>
                                     <Twitter />
                                 </ListItemIcon>
                             </ListItem>
                         </a>
-                        <a rel='noreferrer author' href='/download/cv-nahuel-schmidt.pdf' download="cv-nahuel-schmidt.pdf">
+                        <a rel='noreferrer author' href={data.links.download} download={data.links.cv}>
                             <ListItem button>
                                 <ListItemIcon>
                                     <GitHub />
                                 </ListItemIcon>
                             </ListItem>
                         </a>
-                        <a rel='noreferrer author' href='https://github.com/KloutDevs' target="_blank">
+                        <a rel='noreferrer author' href={data.links.github} target="_blank">
                             <ListItem button>
                                 <ListItemIcon>
                                     <LinkedIn />

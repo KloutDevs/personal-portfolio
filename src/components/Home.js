@@ -1,48 +1,55 @@
-import { ThemeProvider } from '@emotion/react';
-import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { Typography } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
-import CustomTheme from '../utils/theme.js';
+/* GENERAL IMPORTS */
+
 import * as React from 'react';
 import Typed from './type.js';
+import data from './portfolioData.js';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  height: (theme.height) ? theme.height : '30rem',
-  textAlign: 'center',
+/* MATERIAL UI IMPORTS */
 
-  color: theme.palette.text.secondary,
-}));
+import { ThemeProvider } from '@emotion/react';
+import { Typography, Avatar, Box, Button, Grid, List, ListItem, ListItemIcon, Paper, Stack } from '@mui/material';
+import { DocumentScanner, GitHub, LinkedIn } from '@mui/icons-material';
+import { styled } from '@mui/material/styles';
 
-const styles = {
-  list: {
-    width: '100%',
-    maxWidth: 360,
-    bgcolor: 'background.paper'
-  },
-  buttomKnowMore: {
-    bgcolor: CustomTheme.palette.primary.main,
-    '&:hover': {
-      bgcolor: CustomTheme.palette.primary.dark
+
+export default function Home(props) {
+  let theme = props.theme; // Require the theme from the App.js
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#fff',
+    ...theme.typography.body2,
+    backgroundImage: 'none',
+    padding: theme.spacing(1),
+    height: (theme.height) ? theme.height : '30rem',
+    textAlign: 'center',
+    '& .MuiTypography-root': {
+      color: theme.palette.mode === 'dark' ? '#ffffffd8' : 'rgba(0, 0, 0, 0.8)',
     }
-  },
+  })); // Paper Style
 
-};
+  /* All Styles */
 
-export default function AutoGrid(props) {
+  const styles = {
+    list: {
+      width: '100%',
+      maxWidth: 360,
+      '& .MuiButtonBase-root .MuiListItemIcon-root': {
+        color: theme.palette.mode === 'dark' ? '#ffffffd8' : '#262626',
+        '&:hover': {
+          color: theme.palette.mode === 'dark' ? '#fff' : '#000'
+        }
+      }
+    },
+    buttomKnowMore: {
+      bgcolor: theme.palette.primary.main,
+      '&:hover': {
+        bgcolor: theme.palette.primary.dark
+      }
+    },
+
+  };
+
+  /* SCROLL TO Function for the Know More Button */
 
   const scrollTo = () => {
     let scrollTo = document.querySelector(`.about`).getBoundingClientRect().top + window.pageYOffset;
@@ -52,34 +59,34 @@ export default function AutoGrid(props) {
 
   return (
     <ThemeProvider theme={props.theme}>
-      <Box sx={{flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={3}>
-          <Grid item theme={props.theme} xs={1}>
+          <Grid item xs={1}>
             <List sx={styles.list} component="nav">
-              <a rel='noreferrer author' href='https://linkedin.com/in/nahuel-schmidt-720b57263/' target="_blank">
+              <a rel='noreferrer author' href={data.links.linkedin} target="_blank">
                 <ListItem button>
                   <ListItemIcon>
-                    <LinkedInIcon />
+                    <LinkedIn />
                   </ListItemIcon>
                 </ListItem>
               </a>
               <a rel='noreferrer author' href='/download/cv-nahuel-schmidt.pdf' download="cv-nahuel-schmidt.pdf">
                 <ListItem button>
                   <ListItemIcon>
-                    <DocumentScannerIcon />
+                    <DocumentScanner />
                   </ListItemIcon>
                 </ListItem>
               </a>
-              <a rel='noreferrer author' href='https://github.com/KloutDevs' target="_blank">
+              <a rel='noreferrer author' href={data.links.github} target="_blank">
                 <ListItem button>
                   <ListItemIcon>
-                    <GitHubIcon />
+                    <GitHub />
                   </ListItemIcon>
                 </ListItem>
               </a>
             </List>
           </Grid>
-          <Grid id="presentationContainer" item xs={5}>
+          <Grid id="presentationContainer" item xs>
             <Item theme={props.theme} id="presentation_item">
               <Typography id="title_typed" className='presentation_title' variant="h2" component="h3" >
                 <Typed />
