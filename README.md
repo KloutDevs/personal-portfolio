@@ -34,13 +34,13 @@ I am studying and testing the technologies mentioned above for use in the market
 
 |Page|Status|
 |--|--|
-|Navbar|🟡|
+|Navbar|🟢|
 |Home|🟢|
 |About|🟢|
 |Skills|🟡|
-|Services|🟡|
+|Services|🟢|
 |Works|🟡|
-|ContactMe|🟡|
+|ContactMe|🟢|
 |Footer|🟡|
 
   
