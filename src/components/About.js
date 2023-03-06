@@ -55,7 +55,7 @@ export default function About(props) {
                         <Item id="avatar-container">
                             <Avatar id="avatar-item"
                                 alt="Nahuel Schmidt"
-                                src="/assets/AboutPhoto.jpeg"
+                                src="/assets/imgs/AboutPhoto.jpeg"
                                 sx={{ width: 320, height: 320 }}
                             />
                         </Item>

@@ -1,19 +1,7 @@
 import { CheckCircle, Cancel, Error } from '@mui/icons-material';
 import { Box, Grid, ImageList, ImageListItem, Paper, Tab, Tabs, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { styled, ThemeProvider } from '@mui/material/styles';
 import * as React from 'react';
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#fff',
-    ...theme.typography.body2,
-    backgroundImage: 'none',
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    '& .MuiTypography-root': {
-        color: theme.palette.mode === 'dark' ? '#ffffffd8' : 'rgba(0, 0, 0, 0.6)',
-    },
-    color: theme.palette.mode === 'dark' ? '#ffffffd8' : 'rgba(0, 0, 0, 0.7)',
-})); // Paper Styles
 
 const itemData = [
     {
@@ -90,14 +78,25 @@ const itemData = [
     },
 ];
 
-export default function AutoGrid() {
+export default function Works(props) {
+    const [category, setcategory] = React.useState('one'); // Set the category for the updateItems func
+    const [filter, setFilter] = React.useState(null); // Set the filter for the updateItems func
+    const [items, setItems] = React.useState(itemData); // Set the items for the galery loop
+    let theme = props.theme; // Require the theme from the app.js
 
-    const [category, setcategory] = React.useState('one');
-    const [filter, setFilter] = React.useState(null);
-    const [items, setItems] = React.useState(itemData);
+    const Item = styled(Paper)(({ theme }) => ({
+        backgroundColor: theme.palette.mode === 'dark' ? '#121212' : '#fff',
+        ...theme.typography.body2,
+        backgroundImage: 'none',
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        '& .MuiTypography-root': {
+            color: theme.palette.mode === 'dark' ? '#ffffffd8' : 'rgba(0, 0, 0, 0.6)',
+        },
+        color: theme.palette.mode === 'dark' ? '#ffffffd8' : 'rgba(0, 0, 0, 0.7)',
+    })); // Paper Styles
 
-    function updateItems(updateCategory, updateFilter){
-        console.log('------------------[ UPDATE ITEMS ]---------------');
+    function updateItems(updateCategory, updateFilter) {
         let categories = {
             one: "all",
             two: "works",
@@ -105,117 +104,99 @@ export default function AutoGrid() {
             four: "organizations"
         }
         let newItems = [];
-        console.log(`UPDATED C-${updateCategory} F-${updateFilter}`);
-        console.log(`ACTUALLY C-${category} F-${filter}`);
         itemData.forEach((item) => {
-/*             console.log(`I-CATEGORY ${item.category}   S-CATEGORY ${categories[category]}`);
-            console.log(`I-STATE ${item.state}     S-FILTER ${filter}`); */
-            if(item.category === categories[updateCategory] && item.state === updateFilter){
-                console.log('CATEGORIA Y FILTRO IGUAL');
+            if (item.category === categories[updateCategory] && item.state === updateFilter) {
                 newItems.push(item);
-            }else if(item.category === categories[updateCategory] && updateFilter === null){
-                console.log('CATEGORIA IGUAL');
+            } else if (item.category === categories[updateCategory] && updateFilter === null) {
                 newItems.push(item);
-            }else if(categories[updateCategory] === 'all' && item.state === updateFilter){
-                console.log('CATEGORIA ALL Y FILTRO IGUAL');
+            } else if (categories[updateCategory] === 'all' && item.state === updateFilter) {
                 newItems.push(item);
-            }else if(categories[updateCategory] === 'all' && updateFilter === null){
-                console.log('CATEGORIA ALL Y SIN FILTRO (TODA LA DATA)');
+            } else if (categories[updateCategory] === 'all' && updateFilter === null) {
                 newItems = itemData;
             }
         });
         setItems(newItems);
-        console.log('ESTABLISHED ITEMS')
-        console.log(newItems);
-        console.log('-------------[ END UPDATE ITEMS ]---------------');
     }
 
     const handleCategory = (event, newcategory) => {
-        console.log('-----------[ HANDLE CATEGORY ]----------');
         setcategory(newcategory);
-        console.log('CATEGORY UPDATED: '+category);
-        console.log('CATEGORY OBTAINED: '+newcategory);
         updateItems(newcategory, filter);
-        console.log('---------[ END HANDLE CATEGORY ]-----------');
     };
 
     const handleFilter = (event, nextFilter) => {
-        console.log('-----------[ HANDLE FILTER ]----------');
         setFilter(nextFilter);
-        console.log('FILTER UPDATED: '+filter);
-        console.log('FILTER OBTAINED: '+nextFilter);
-        console.log('IN-HANDLE-FILTER-CATEGORY: '+category);
         updateItems(category, nextFilter);
-        console.log('----------[ END HANDLE FILTER ]------------');
     };
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
-            <Grid id="works-container" container spacing={3}>
-                <Grid item xs={4}>
-                    <Item id="Title-container">
-                        <Typography variant="h2" component="h3">
-                            Works
-                        </Typography>
-                        <Typography component="h5">
-                            All of my works, projects, organizations.
-                        </Typography>
-                    </Item>
-                </Grid>
-                <Grid className='options-container' item xs={6}>
-                    <Box className='box-tabs' sx={{ width: '100%' }}>
-                        <Tabs
-                            className='tabs-container'
-                            value={category}
-                            onChange={handleCategory}
-                            textColor="secondary"
-                            indicatorColor="primary"
-                        >
-                            <Tab className='worksTab' value="one" label="ALL" />
-                            <Tab className='projectsTab' value="two" label="WORKS" />
-                            <Tab className='orgsTab' value="three" label="PROJECTS" />
-                            <Tab className='orgsTab' value="four" label="ORGANIZATIONS" disabled />
-                        </Tabs>
-                    </Box>
-                </Grid>
-                <Grid className='works-galery' item xs={9}>
-                    <Item className='galery-container'>
-                        <Box className='galery-box' sx={{ width: 900, height: 450, overflowY: 'scroll' }}>
-                            <ImageList variant="masonry" cols={3} gap={8}>
-                                {items.map((item) => (
-                                    <ImageListItem key={item.img}>
-                                        <img
-                                            src={`${item.img}?w=248&fit=crop&auto=format`}
-                                            srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                            alt={item.title}
-                                            loading="lazy"
-                                        />
-                                    </ImageListItem>
-                                ))}
-                            </ImageList>
+        <ThemeProvider theme={theme}>
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid id="works-container" container spacing={3}>
+                    <Grid item xs={4}>
+                        <Item id="Title-container">
+                            <Typography variant="h2" component="h3">
+                                Works
+                            </Typography>
+                            <Typography component="h5">
+                                All of my works, projects, organizations.
+                            </Typography>
+                        </Item>
+                    </Grid>
+                    <Grid className='options-container' item xs={6}>
+                        <Box className='box-tabs' sx={{ width: '100%' }}>
+                            <Tabs
+                                className='tabs-container'
+                                value={category}
+                                onChange={handleCategory}
+                                textColor="secondary"
+                                indicatorColor="primary"
+                            >
+                                <Tab className='worksTab' value="one" label="ALL" />
+                                <Tab className='projectsTab' value="two" label="WORKS" />
+                                <Tab className='orgsTab' value="three" label="PROJECTS" />
+                                <Tab className='orgsTab' value="four" label="ORGANIZATIONS" disabled />
+                            </Tabs>
                         </Box>
-                    </Item>
-                    <Item className='galery-filter'>
-                        <ToggleButtonGroup
-                            className='worksFilter'
-                            orientation="vertical"
-                            value={filter}
-                            exclusive
-                            onChange={handleFilter}
-                        >
-                            <ToggleButton className='okButton' value="finalized" aria-label="okBtn">
-                                <CheckCircle />
-                            </ToggleButton>
-                            <ToggleButton className='inProcessButton' value="in-progress" aria-label="inProcessButton">
-                                <Error />
-                            </ToggleButton>
-                            <ToggleButton className='notstartedButton' value="not-started" aria-label="notstartedButton">
-                                <Cancel />
-                            </ToggleButton>
-                        </ToggleButtonGroup>
-                    </Item>
+                    </Grid>
+                    <Grid className='works-galery' item xs={9}>
+                        <Item className='galery-container'>
+                            <Box className='galery-box' sx={{ width: 900, height: 450, overflowY: 'scroll' }}>
+                                <ImageList variant="masonry" cols={3} gap={8}>
+                                    {items.map((item) => (
+                                        <ImageListItem key={item.img}>
+                                            <img
+                                                src={`${item.img}?w=248&fit=crop&auto=format`}
+                                                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                                                alt={item.title}
+                                                loading="lazy"
+                                            />
+                                        </ImageListItem>
+                                    ))}
+                                </ImageList>
+                            </Box>
+                        </Item>
+                        <Item className='galery-filter'>
+                            <ToggleButtonGroup
+                                className='worksFilter'
+                                orientation="vertical"
+                                value={filter}
+                                exclusive
+                                onChange={handleFilter}
+                            >
+                                <ToggleButton className='okButton' value="finalized" aria-label="okBtn">
+                                    <CheckCircle />
+                                </ToggleButton>
+                                <ToggleButton className='inProcessButton' value="in-progress" aria-label="inProcessButton">
+                                    <Error />
+                                </ToggleButton>
+                                <ToggleButton className='notstartedButton' value="not-started" aria-label="notstartedButton">
+                                    <Cancel />
+                                </ToggleButton>
+                            </ToggleButtonGroup>
+                        </Item>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </Box>
+            </Box>
+        </ThemeProvider>
     );
 }

@@ -8,10 +8,10 @@ const TypedReactHooksDemo = () => {
   React.useEffect(() => {
     const options = {
       strings: [
-        'I am <strong>Nahuel S.</strong>',
-        `I am <strong style="font-size: 3rem"><span class="yellowTxt">Javascript</span> Lover</strong>`,
+        'I am <strong class="coloredText">Nahuel S.</strong>',
+        `I am <strong style="font-size: 3rem"><span class="coloredText">Javascript</span> Lover</strong>`,
         '<span style="font-size: 2.5rem">Looking for employment</span>',
-        'I am <strong>Nahuel S.</strong>'
+        'I am <strong class="coloredText">Nahuel S.</strong>'
       ],
       typeSpeed: 50,
       backSpeed: 50,

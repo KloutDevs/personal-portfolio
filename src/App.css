@@ -50,7 +50,7 @@ body::-webkit-scrollbar {
 #Home {
   margin-top: 96px !important;
   padding: 2rem;
-  height: 90vh;
+  min-height: 90vh;
 }
 
 #Home .MuiGrid-container {
@@ -94,7 +94,7 @@ body::-webkit-scrollbar {
 /* ABOUT PAGE */
 
 #About {
-  height: 90vh;
+  min-height: 90vh;
 }
 
 #about-container {
@@ -227,7 +227,7 @@ body::-webkit-scrollbar {
 /* Services PAGE*/
 
 #Services {
-  height: 90vh;
+  min-height: 70vh;
 }
 
 #Services #Title-container {
@@ -295,7 +295,7 @@ body::-webkit-scrollbar {
 /* Works Page */
 
 #Works {
-  height: 110vh;
+  min-height: 90vh;
 }
 
 #works-container {
@@ -329,7 +329,7 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-.works-galery .galery-filter {
+/* .works-galery .galery-filter {
   box-shadow: none;
 }
 
@@ -343,54 +343,25 @@ body::-webkit-scrollbar {
 
 .galery-filter .worksFilter .css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected {
   color: var(--customizeColor);
-}
+} */
 
 /* Contact Page */
 
 #Contact {
-  height: 90vh;
+  min-height: 30vh;
   display: flex;
   align-items: center;
+  padding: 5rem;
 }
 
-#contact-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  background-color: #d2a0a4;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 70%;
-  position: relative;
-  padding: 2rem;
-  border-radius: 5rem;
+#Contact .container {
+  margin: auto;
+  max-width: max-content;
+  flex-basis: auto;
 }
 
-.container {
-  width: 50rem !important;
-}
-
-.container {
-  flex-basis: 70% !important;
-  max-width: 50% !important;
-}
-
-.container h4 {
-  color: var(--white);
-  font-size: 2.2rem;
-  margin-bottom: 1.5rem;
-}
-
-.container h5 {
-  color: var(--white);
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-}
-
-
-.avatarItem {
-  margin-left: 4rem;
+#Contact .container .item {
+  margin-top: 1.5rem !important;
 }
 
 /* FOOTER */
@@ -446,8 +417,8 @@ footer .boxContainer .Social .brand{
 
 /* ADDITIONAL */
 
-.yellowTxt{
-  color: #d4de50;
+.coloredText{
+  color: var(--customizeColor);
 }
 
 .typed-cursor {

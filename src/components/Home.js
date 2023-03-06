@@ -46,7 +46,11 @@ export default function Home(props) {
         bgcolor: theme.palette.primary.dark
       }
     },
-
+    img: {
+      borderRadius: 0,
+      width: 425,
+      height: 425
+    }
   };
 
   /* SCROLL TO Function for the Know More Button */
@@ -106,8 +110,8 @@ export default function Home(props) {
             <Item theme={props.theme} id='photoItem'>
               <Avatar
                 alt="Nahuel Schmidt"
-                src="/assets/programming.png"
-                sx={{ width: 425, height: 425 }}
+                src="/assets/imgs/programming.png"
+                sx={styles.img}
               />
             </Item>
           </Grid>
